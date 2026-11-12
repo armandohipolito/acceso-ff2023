@@ -16,35 +16,32 @@
 
 body {
     min-height: 100vh;
-    font-family: Arial, sans-serif;
-    background: radial-gradient(circle at top, #142342, #080d19 60%);
+    padding: 25px 15px;
+    background: radial-gradient(circle at top, #172b4d, #080d19 65%);
     color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 25px;
+    font-family: Arial, sans-serif;
 }
 
-.contenedor {
+.container {
     width: 100%;
-    max-width: 500px;
+    max-width: 560px;
+    margin: 35px auto;
+}
+
+.header {
     text-align: center;
-    background: #101827;
-    border: 1px solid #263d61;
-    border-radius: 18px;
-    padding: 38px 25px;
-    box-shadow: 0 15px 50px #0008;
+    margin-bottom: 30px;
 }
 
 .logo {
-    font-size: 14px;
     color: #d4af37;
-    letter-spacing: 4px;
-    margin-bottom: 22px;
+    font-size: 13px;
+    letter-spacing: 5px;
+    margin-bottom: 18px;
 }
 
 h1 {
-    font-size: 27px;
+    font-size: 28px;
     margin-bottom: 12px;
 }
 
@@ -52,117 +49,361 @@ h1 span {
     color: #d4af37;
 }
 
-.subtitulo {
-    color: #9baac1;
+.subtitle {
+    color: #9eabc0;
     font-size: 14px;
     line-height: 1.7;
-    margin-bottom: 28px;
 }
 
-.linea {
-    height: 2px;
-    width: 65px;
-    background: #d4af37;
-    margin: 0 auto 25px;
+.card {
+    background: #111c2e;
+    border: 1px solid #263c5d;
+    border-radius: 15px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 12px 35px #0004;
 }
 
-.info {
-    background: #17243a;
-    border-radius: 12px;
-    padding: 20px;
-    text-align: left;
-    margin-bottom: 25px;
+.phase-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 17px;
 }
 
-.info h2 {
-    font-size: 16px;
+.phase-title h2 {
+    font-size: 17px;
+}
+
+.counter {
     color: #d4af37;
-    margin-bottom: 12px;
-}
-
-.info p {
-    font-size: 13px;
-    line-height: 1.8;
-    color: #c3cede;
-}
-
-.boton {
-    display: block;
-    background: linear-gradient(90deg, #174fba, #2878e8);
-    color: white;
-    text-decoration: none;
-    padding: 16px;
-    border-radius: 9px;
-    font-size: 14px;
+    font-size: 20px;
     font-weight: bold;
-    letter-spacing: 1px;
-    transition: 0.25s;
 }
 
-.boton:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 7px 22px #2878e866;
+.progress-bg {
+    height: 9px;
+    width: 100%;
+    border-radius: 20px;
+    background: #25344c;
+    overflow: hidden;
+    margin-bottom: 22px;
 }
 
-.aviso {
-    color: #8997ac;
+.progress {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #1762ce, #d4af37);
+    border-radius: 20px;
+    transition: width .3s ease;
+}
+
+.step {
+    background: #18263b;
+    border: 1px solid #2a3d59;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 12px;
+}
+
+.step-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+}
+
+.step h3 {
+    font-size: 14px;
+}
+
+.step p {
+    color: #9eabc0;
+    font-size: 12px;
+    line-height: 1.6;
+    margin: 9px 0 12px;
+}
+
+.step button, .article-link {
+    border: none;
+    border-radius: 7px;
+    padding: 11px 14px;
+    color: white;
+    background: #205bb5;
+    font-weight: bold;
+    font-size: 12px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.step button:hover, .article-link:hover {
+    background: #347be0;
+}
+
+.step button.done {
+    background: #176b48;
+    cursor: default;
+}
+
+.check {
+    color: #4dd69a;
+    font-size: 18px;
+}
+
+.locked {
+    opacity: .45;
+}
+
+.hidden {
+    display: none;
+}
+
+.note {
+    color: #8998af;
     font-size: 11px;
     line-height: 1.7;
-    margin-top: 20px;
+    text-align: center;
+    margin-top: 18px;
+}
+
+.reset {
+    display: block;
+    margin: 20px auto;
+    background: transparent;
+    color: #8090a9;
+    border: 1px solid #35445a;
+    padding: 9px 14px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 11px;
 }
 
 footer {
-    margin-top: 30px;
-    color: #687990;
+    text-align: center;
+    color: #75839b;
     font-size: 11px;
+    line-height: 1.8;
+    margin: 30px 0;
 }
 </style>
 </head>
 
 <body>
 
-<main class="contenedor">
+<div class="container">
 
+<header class="header">
     <div class="logo">PROJECT MANDO</div>
-
     <h1>ACCESO <span>FF2023</span></h1>
-
-    <p class="subtitulo">
-        Bienvenido a nuestro sistema de acceso.
-        Forma parte de nuestra comunidad.
+    <p class="subtitle">
+        Completa las fases de incorporación
+        y conoce nuestra comunidad.
     </p>
+</header>
 
-    <div class="linea"></div>
+<section class="card" id="phase1">
 
-    <section class="info">
-        <h2>INFORMACIÓN DE ACCESO</h2>
-        <p>
-            El acceso a PROJECT MANDO es gratuito.
-            Puedes consultar el artículo externo mediante
-            el siguiente botón.
-        </p>
-    </section>
+    <div class="phase-title">
+        <h2>FASE 1 · ACCESO</h2>
+        <div class="counter" id="count1">0/5</div>
+    </div>
 
-    <a class="boton"
-       href="https://donpviral.xyz/nasa-contrata-desenvolvimento-de-rede-5g-e-wi-fi-6-para-a-lua/"
-       target="_blank"
-       rel="noopener noreferrer">
-       LEER ARTÍCULO
-    </a>
+    <div class="progress-bg">
+        <div class="progress" id="bar1"></div>
+    </div>
 
-    <p class="aviso">
-        El artículo pertenece a un sitio externo y puede
-        mostrar publicidad. Su lectura es opcional y no
-        desbloquea roles ni requiere introducir contraseñas
-        o datos personales.
-    </p>
+    <div class="step">
+        <div class="step-top">
+            <h3>01. Información del proyecto</h3>
+            <span class="check" id="check1"></span>
+        </div>
+        <p>Conoce PROJECT MANDO y nuestra comunidad.</p>
+        <button onclick="completeStep(1)">Completar paso</button>
+    </div>
 
-    <footer>
-        PROJECT MANDOメFF2023<br>
-        EL MEJOR PROYECTO DEL MOMENTO.
-    </footer>
+    <div class="step">
+        <div class="step-top">
+            <h3>02. Normas de la comunidad</h3>
+            <span class="check" id="check2"></span>
+        </div>
+        <p>Consulta las reglas de nuestro servidor de Discord.</p>
+        <button onclick="completeStep(2)">Completar paso</button>
+    </div>
 
-</main>
+    <div class="step">
+        <div class="step-top">
+            <h3>03. Canales del servidor</h3>
+            <span class="check" id="check3"></span>
+        </div>
+        <p>Conoce los canales y las funciones disponibles.</p>
+        <button onclick="completeStep(3)">Completar paso</button>
+    </div>
+
+    <div class="step">
+        <div class="step-top">
+            <h3>04. Convivencia</h3>
+            <span class="check" id="check4"></span>
+        </div>
+        <p>Confirma que conoces las normas de convivencia.</p>
+        <button onclick="completeStep(4)">Completar paso</button>
+    </div>
+
+    <div class="step">
+        <div class="step-top">
+            <h3>05. Primera fase</h3>
+            <span class="check" id="check5"></span>
+        </div>
+        <p>Confirma que has revisado la información anterior.</p>
+        <button onclick="completeStep(5)">Completar paso</button>
+    </div>
+
+</section>
+
+<section class="card locked hidden" id="phase2">
+
+    <div class="phase-title">
+        <h2>FASE 2 · CONTINUAR</h2>
+        <div class="counter" id="count2">0/2</div>
+    </div>
+
+    <div class="progress-bg">
+        <div class="progress" id="bar2"></div>
+    </div>
+
+    <div class="step">
+        <div class="step-top">
+            <h3>01. Artículo informativo</h3>
+            <span class="check" id="check6"></span>
+        </div>
+        <p>Consulta el contenido externo. La lectura es opcional.</p>
+        <a class="article-link"
+           href="https://donpviral.xyz/nasa-contrata-desenvolvimento-de-rede-5g-e-wi-fi-6-para-a-lua/"
+           target="_blank"
+           rel="noopener noreferrer">
+           LEER ARTÍCULO
+        </a>
+        <br><br>
+        <button onclick="completeStep(6)">Marcar como revisado</button>
+    </div>
+
+    <div class="step">
+        <div class="step-top">
+            <h3>02. Finalizar incorporación</h3>
+            <span class="check" id="check7"></span>
+        </div>
+        <p>Confirma que has terminado de revisar la información.</p>
+        <button onclick="completeStep(7)">Finalizar fase</button>
+    </div>
+
+</section>
+
+<p class="note">
+    El progreso se guarda en este navegador.
+    Es una lista de incorporación y no una verificación
+    de anuncios, identidad o entrega automática de roles.
+</p>
+
+<button class="reset" onclick="resetProgress()">
+    RESTABLECER PROGRESO
+</button>
+
+<footer>
+    PROJECT MANDOメFF2023<br>
+    EL MEJOR PROYECTO DEL MOMENTO.
+</footer>
+
+</div>
+
+<script>
+const STORAGE_KEY = "mando_access_progress";
+
+let completed = [];
+
+try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+    if (Array.isArray(saved)) {
+        completed = saved.filter(
+            n => Number.isInteger(n) && n >= 1 && n <= 7
+        );
+    }
+} catch (error) {
+    completed = [];
+}
+
+function completeStep(number) {
+    const phase1Done = [1,2,3,4,5].every(
+        n => completed.includes(n)
+    );
+
+    if (number > 5 && !phase1Done) return;
+    if (completed.includes(number)) return;
+
+    completed.push(number);
+
+    try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(completed));
+    } catch (error) {
+        alert("No se pudo guardar el progreso en este navegador.");
+    }
+
+    updateProgress();
+}
+
+function updateProgress() {
+    const first = completed.filter(n => n >= 1 && n <= 5).length;
+    const second = completed.filter(n => n >= 6 && n <= 7).length;
+
+    document.getElementById("count1").textContent = first + "/5";
+    document.getElementById("bar1").style.width =
+        (first / 5 * 100) + "%";
+
+    document.getElementById("count2").textContent = second + "/2";
+    document.getElementById("bar2").style.width =
+        (second / 2 * 100) + "%";
+
+    for (let i = 1; i <= 7; i++) {
+        const button = document.querySelector(
+            `[onclick="completeStep(${i})"]`
+        );
+
+        const check = document.getElementById("check" + i);
+
+        if (completed.includes(i)) {
+            if (button) {
+                button.textContent = "COMPLETADO";
+                button.classList.add("done");
+            }
+            if (check) check.textContent = "✓";
+        }
+    }
+
+    const firstComplete = first === 5;
+    const phase2 = document.getElementById("phase2");
+
+    if (firstComplete) {
+        phase2.classList.remove("hidden", "locked");
+    } else {
+        phase2.classList.add("hidden", "locked");
+    }
+}
+
+function resetProgress() {
+    if (!confirm("¿Quieres restablecer todo el progreso?")) return;
+
+    completed = [];
+
+    try {
+        localStorage.removeItem(STORAGE_KEY);
+    } catch (error) {
+        alert("No se pudo borrar el progreso guardado.");
+    }
+
+    location.reload();
+}
+
+updateProgress();
+</script>
 
 </body>
 </html>
